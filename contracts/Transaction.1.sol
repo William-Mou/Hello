@@ -47,7 +47,11 @@ contract Transaction {
             return (now - create_time);
         }
     }*/
-    
+    function returnMoney () public {
+        if (msg.sender!=employee || ended == true ) revert();
+        employer.transfer(this.balance);
+    }   
+
     function collectMoney() public {
         //Deposit(employee,ended);
         if ((now - create_time) > (expire * 1 seconds)) {
